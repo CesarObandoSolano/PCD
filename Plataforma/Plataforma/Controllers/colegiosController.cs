@@ -299,8 +299,4 @@ namespace Plataforma.Controllers
 }
 
 
-<<<<<<< HEAD
-//Commentario prueba commit Cesar
-=======
 //Commentario prueba commit Allan Moya M
->>>>>>> origin/master
