@@ -96,9 +96,15 @@ namespace Plataforma.Controllers
                 }
                 if (user.logueado == true)
                 {
-                    ModelState.Remove("Password");
-                    ModelState.AddModelError("", "Esta cuenta ya se encuentra en uso");
-                    return View();
+                    int dia = user.log_visitas.Last().fecha_hora.DayOfYear;
+                    int hora = user.log_visitas.Last().fecha_hora.Hour;
+                    int minuto = user.log_visitas.Last().fecha_hora.Minute;
+                    if (!(dia != DateTime.Now.Day || hora != DateTime.Now.Hour || DateTime.Now.Minute - minuto < 30))
+                    {
+                        ModelState.Remove("Password");
+                        ModelState.AddModelError("", "Esta cuenta ya se encuentra en uso");
+                        return View();
+                    }
                 }
                 bool isVigente = new usuariosController().VerificarVigencia(user.id);
                 if (isVigente)
@@ -113,10 +119,6 @@ namespace Plataforma.Controllers
                     log.fecha_hora = DateTime.Now;
                     db.log_visitas.Add(log);
                     db.SaveChanges();
-                    //HttpCookie cookie = new HttpCookie("user_id");
-                    //cookie.Value = user.id.ToString();
-                    //cookie.Expires = DateTime.Now.AddMinutes(30);
-                    //System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
 
                     if (returnUrl == null || returnUrl == "")
                     {
@@ -208,13 +210,13 @@ namespace Plataforma.Controllers
                 System.Web.HttpContext.Current.Session.RemoveAll();
                 System.Web.HttpContext.Current.Session.Abandon();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
             return this.RedirectToAction("Login", "Account");
         }
-        
+
 
 
 
