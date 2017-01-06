@@ -99,7 +99,7 @@ namespace Plataforma.Controllers
                     int dia = user.log_visitas.Last().fecha_hora.DayOfYear;
                     int hora = user.log_visitas.Last().fecha_hora.Hour;
                     int minuto = user.log_visitas.Last().fecha_hora.Minute;
-                    if (!(dia != DateTime.Now.Day || hora != DateTime.Now.Hour || DateTime.Now.Minute - minuto < 30))
+                    if ((dia == DateTime.Now.DayOfYear && hora == DateTime.Now.Hour))
                     {
                         ModelState.Remove("Password");
                         ModelState.AddModelError("", "Esta cuenta ya se encuentra en uso");
