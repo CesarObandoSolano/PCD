@@ -202,7 +202,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/27/2012 13:00:52</publishTime>
     </File>
     <File Include="bin/Plataforma.dll">
-      <publishTime>12/21/2016 11:49:28</publishTime>
+      <publishTime>01/06/2017 16:43:41</publishTime>
     </File>
     <File Include="bin/Quartz.dll">
       <publishTime>08/24/2016 05:42:28</publishTime>
