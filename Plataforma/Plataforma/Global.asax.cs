@@ -1,5 +1,5 @@
-﻿using Plataforma.Controllers;
-using Plataforma.Models;
+﻿using Plataforma.Areas.PCD.Controllers;
+using Plataforma.Areas.PCD.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
