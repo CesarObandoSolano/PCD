@@ -369,6 +369,13 @@
     <Compile Include="App_Start\MvcStartup.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\PCD\Controllers\ArticulosController.cs" />
+    <Compile Include="Areas\PCD\Models\Articulo.cs">
+      <DependentUpon>ModelPimas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\PCD\Models\Venta.cs">
+      <DependentUpon>ModelPimas.tt</DependentUpon>
+    </Compile>
     <Compile Include="Areas\PCD\PCDAreaRegistration.cs" />
     <Compile Include="Areas\PCD\Controllers\AccountController.cs" />
     <Compile Include="Areas\PCD\Controllers\colegiosController.cs" />
@@ -575,6 +582,11 @@
     <Content Include="config\BaseRestExtensions.config" />
     <Content Include="config\applications.config" />
     <Content Include="config\404handlers.config" />
+    <Content Include="Areas\PCD\Views\Articulos\Create.cshtml" />
+    <Content Include="Areas\PCD\Views\Articulos\Delete.cshtml" />
+    <Content Include="Areas\PCD\Views\Articulos\Details.cshtml" />
+    <Content Include="Areas\PCD\Views\Articulos\Edit.cshtml" />
+    <Content Include="Areas\PCD\Views\Articulos\Index.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
