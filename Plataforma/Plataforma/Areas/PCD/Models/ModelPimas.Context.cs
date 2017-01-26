@@ -49,5 +49,7 @@ namespace Plataforma.Areas.PCD.Models
         public virtual DbSet<tipo_colegio> tipo_colegio { get; set; }
         public virtual DbSet<log_visitas_documentousuario> log_visitas_documentousuario { get; set; }
         public virtual DbSet<log_visitas_cursousuario> log_visitas_cursousuario { get; set; }
+        public virtual DbSet<Articulo> Articulos { get; set; }
+        public virtual DbSet<Venta> Ventas { get; set; }
     }
 }

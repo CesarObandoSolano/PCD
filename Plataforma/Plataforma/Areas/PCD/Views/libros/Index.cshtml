@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Plataforma.Models.libro>
+﻿@model IEnumerable<Plataforma.Areas.PCD.Models.libro>
 
 @{
     ViewBag.Title = "Indice";
@@ -8,21 +8,21 @@
     <script>
         function Buscar() {
             var nombre = document.getElementById('nombre').value;
-            $("#tabla-libro").load("/libros/Index/?nombre=" + nombre + " #tabla-libro");
+            $("#tabla-libro").load("PCD/libros/Index/?nombre=" + nombre + " #tabla-libro");
             return false;
         }
         function SolicitarLibro(id) {
             $(document).ready(function () {
                 $.ajax({
                     type: "POST",
-                    url: "/libros/SolicitarLibro",
+                    url: "PCD/libros/SolicitarLibro",
                     data: '{"id":"' + id + '"}',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (data) {
                         if (data === "Exito") {
                             alert("Modificación exitosa");
-                            $('#' + id).load('../libros/Index #' + id);
+                            $('#' + id).load('..PCD/libros/Index #' + id);
                         }
                     },
                     error: errores
@@ -41,7 +41,7 @@
     <p>
         @if (Session["usuario"] != null)
         {
-            var usuario = (Plataforma.Models.usuario)Session["usuario"];
+            var usuario = (Plataforma.Areas.PCD.Models.usuario)Session["usuario"];
             if (usuario.roles.FirstOrDefault().rol.Equals(Plataforma.App_Start.Constantes.PROFESOR_PREMIUM))
             {        
                 @Html.ActionLink("Crear un nuevo libro", "Create")
@@ -72,7 +72,7 @@
                 <td id="@item.id">
                     @if (Session["usuario"] != null)
                     {
-                        var usuario = (Plataforma.Models.usuario)Session["usuario"];
+                        var usuario = (Plataforma.Areas.PCD.Models.usuario)Session["usuario"];
                         if (usuario.roles.FirstOrDefault().rol.Equals(Plataforma.App_Start.Constantes.PROFESOR_PREMIUM))
                         {
                             <p>
