@@ -355,7 +355,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_articulo" Type="int" Nullable="false" />
           <Property Name="nombre_comprador" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="nombre_receptor" Type="varchar" MaxLength="150" Nullable="false" />
