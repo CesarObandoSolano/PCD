@@ -370,6 +370,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\PCD\Controllers\ArticulosController.cs" />
+    <Compile Include="Areas\PCD\Controllers\VentasController.cs" />
     <Compile Include="Areas\PCD\Models\Articulo.cs">
       <DependentUpon>ModelPimas.tt</DependentUpon>
     </Compile>
@@ -587,6 +588,11 @@
     <Content Include="Areas\PCD\Views\Articulos\Details.cshtml" />
     <Content Include="Areas\PCD\Views\Articulos\Edit.cshtml" />
     <Content Include="Areas\PCD\Views\Articulos\Index.cshtml" />
+    <Content Include="Areas\PCD\Views\Ventas\Create.cshtml" />
+    <Content Include="Areas\PCD\Views\Ventas\Delete.cshtml" />
+    <Content Include="Areas\PCD\Views\Ventas\Details.cshtml" />
+    <Content Include="Areas\PCD\Views\Ventas\Edit.cshtml" />
+    <Content Include="Areas\PCD\Views\Ventas\Index.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
