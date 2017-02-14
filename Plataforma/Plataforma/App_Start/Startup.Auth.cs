@@ -25,7 +25,7 @@ namespace Plataforma
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/PCD/Account/Login"),
                 ExpireTimeSpan = TimeSpan.FromMinutes(30.0),
                 Provider = new CookieAuthenticationProvider
                 {

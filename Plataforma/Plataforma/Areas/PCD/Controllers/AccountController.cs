@@ -100,7 +100,7 @@ namespace Plataforma.Areas.PCD.Controllers
                     int hora = user.log_visitas.Last().fecha_hora.Hour;
                     //int minuto = hora*60 + user.log_visitas.Last().fecha_hora.Minute;
 
-                    if (dia == DateTime.Now.DayOfYear && (DateTime.Now.Hour - hora <=1))
+                    if (dia == DateTime.Now.DayOfYear && (DateTime.Now.Hour - hora <= 1))
                     {
                         ModelState.Remove("Password");
                         ModelState.AddModelError("", "Esta cuenta ya se encuentra en uso");
@@ -112,7 +112,8 @@ namespace Plataforma.Areas.PCD.Controllers
                 {
                     user.cursos = user.cursos.OrderBy(c => c.curso1).ToList();
                     this.SignInUser(user.nombre + " " + user.apellidos, user.id, model.RememberMe);
-                    System.Web.HttpContext.Current.Session["usuario"] = user;
+                    //System.Web.HttpContext.Current.Session["usuario"] = user;
+                    Session["usuario"] = user;
                     db.usuarios.Find(user.id).logueado = true;
                     log_visitas log = new log_visitas();
                     log.usuario = user;
@@ -181,7 +182,6 @@ namespace Plataforma.Areas.PCD.Controllers
             {
                 try
                 {
-
                     db.usuarios.Find(user.id).logueado = false;
                     db.SaveChanges();
                     // Setting.    
@@ -189,9 +189,9 @@ namespace Plataforma.Areas.PCD.Controllers
                     var authenticationManager = ctx.Authentication;
                     // Sign Out.    
                     authenticationManager.SignOut();
-                    System.Web.HttpContext.Current.Session["usuario"] = null;
-                    System.Web.HttpContext.Current.Session.RemoveAll();
-                    System.Web.HttpContext.Current.Session.Abandon();
+                    Session["usuario"] = null;
+                    Session.RemoveAll();
+                    Session.Abandon();
                 }
                 catch (Exception ex)
                 {
@@ -209,14 +209,29 @@ namespace Plataforma.Areas.PCD.Controllers
             {
                 db.usuarios.Find(id).logueado = false;
                 db.SaveChanges();
-                System.Web.HttpContext.Current.Session.RemoveAll();
-                System.Web.HttpContext.Current.Session.Abandon();
+                //Session.RemoveAll();
+                //Session.Abandon();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
             return this.RedirectToAction("Login", "Account");
+        }
+
+        [HttpPost]
+        public ActionResult LogOffAutomatico()
+        {
+            if (Session["usuario"] != null)
+            {
+                usuario usuarioSesion = (usuario)HttpContext.Session["usuario"];
+                db.usuarios.Find(usuarioSesion.id).logueado = false;
+                db.SaveChanges();
+                Session.RemoveAll();
+                Session.Abandon();
+                return Json("Exito", JsonRequestBehavior.AllowGet);
+            }
+            return Json("Usuario no autenticado o sin permisos para utilizar esta función", JsonRequestBehavior.AllowGet);
         }
 
 

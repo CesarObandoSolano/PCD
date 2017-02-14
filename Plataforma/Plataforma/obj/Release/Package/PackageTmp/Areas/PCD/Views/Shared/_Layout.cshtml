@@ -13,6 +13,24 @@
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/jquery-1.10.2.js"></script>
 
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            
+            //$(window).on('beforeunload', function () {
+            //   return 'Are you sure you want to leave?';
+            //});
+
+            //$(window).on('unload', function(){
+            //    $.ajax({
+            //        type: "POST",
+            //        url: "/PCD/Account/LogOffAutomatico"
+            //});
+            //});
+        });
+    </script>
+
+
 </head>
 
 <body>
@@ -82,19 +100,19 @@
                         @Html.ActionLink("Administrar Cursos", "IndiceCursos", "cursos")<br>
                         @Html.ActionLink("Documentos", "Index", "documentos_profe")<br>
                         @Html.ActionLink("Libros", "Index", "libros")<br>
-                        @Html.ActionLink("Ver Perfil", "details", "usuarios", usuario.id)<br>
+                        <a href="~/PCD/usuarios/details/@usuario.id">Ver Perfil</a><br>
 
 
                         @*<a href="~/cursos/IndiceCursos">Administrar Cursos</a><br>
-                        <a href="~/documentos_profe/">Documentos</a><br>
-                        <a href="~/libros/">Libros</a><br>
-                        <a href="~/usuarios/details/@usuario.id">Ver Perfil</a><br>*@
+                            <a href="~/documentos_profe/">Documentos</a><br>
+                            <a href="~/libros/">Libros</a><br>
+                            <a href="~/PCD/usuarios/details/@usuario.id">Ver Perfil</a><br>*@
                     }
                     else
                     {
                         <a href="~/usuarios/details/@usuario.id">Ver Perfil</a><br>
                     }
-                    @if (usuario.roles.FirstOrDefault().rol.Equals(Plataforma.App_Start.Constantes.PROFESOR_PREMIUM) 
+                    @if (usuario.roles.FirstOrDefault().rol.Equals(Plataforma.App_Start.Constantes.PROFESOR_PREMIUM)
                         || usuario.roles.FirstOrDefault().rol.Equals(Plataforma.App_Start.Constantes.ESTUDIANTE_PREMIUM))
                     {
                         <h3>Grupos</h3><hr />
@@ -152,7 +170,7 @@
                     }
                 </div>
             }
-         } 
+        }
 
 
     </div>
@@ -166,5 +184,5 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-    @*@Styles.Render("~/Content/css")
+@*@Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/bootstrap")*@
