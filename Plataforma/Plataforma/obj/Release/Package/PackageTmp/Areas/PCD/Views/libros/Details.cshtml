@@ -1,4 +1,4 @@
-﻿@model Plataforma.Models.libro
+﻿@model Plataforma.Areas.PCD.Models.libro
 
 @{
     ViewBag.Title = "Detalles";
@@ -41,7 +41,7 @@
         <p>
 @if (Session["usuario"] != null)
 {
-    var usuario = (Plataforma.Models.usuario)Session["usuario"];
+    var usuario = (Plataforma.Areas.PCD.Models.usuario)Session["usuario"];
     if (usuario.roles.FirstOrDefault().rol.Equals(Plataforma.App_Start.Constantes.PROFESOR_PREMIUM))
     {
             @Html.ActionLink("Editar", "Edit", new { id = Model.id })

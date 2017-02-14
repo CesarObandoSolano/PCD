@@ -515,6 +515,27 @@ namespace Plataforma.Areas.PCD.Controllers
             return Json("Usuario no autenticado o sin permisos para utilizar esta función", JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
+        [HttpPost]
+        public ActionResult CerrarSesiones()
+        {
+            if (Session["usuario"] != null)
+            {
+                usuario usuarioSesion = (usuario)HttpContext.Session["usuario"];
+                if (usuarioSesion.roles.FirstOrDefault().rol.Equals(Constantes.ADMINISTRADOR))
+                {
+                    List<usuario> usuarios = db.usuarios.Where(u=>u.logueado==true).ToList();
+                    foreach (usuario item in usuarios)
+                    {
+                        db.usuarios.Find(item.id).logueado = false;
+                    }
+                    db.SaveChanges();
+                    return Json("Exito", JsonRequestBehavior.AllowGet);
+                }
+            }
+            return Json("Usuario no autenticado o sin permisos para utilizar esta función", JsonRequestBehavior.AllowGet);
+        }
+
         [AllowAnonymous]
         public void NotificarVencimiento()
         {

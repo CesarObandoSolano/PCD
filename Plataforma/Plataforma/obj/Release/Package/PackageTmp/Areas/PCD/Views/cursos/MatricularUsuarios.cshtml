@@ -18,7 +18,7 @@
                     var rol = document.getElementById('rol').value;
                     var colegio = document.getElementById('colegio').value;
                     var nivel = document.getElementById('nivel').value;
-                    $("#matriculables").load("../MatricularUsuarios/" +@Model.id +"?nombreusuario=" + nombre + "&rol=" + rol + "&colegio=" + colegio + "&nivel=" + nivel + " #usuariosMatricular");
+                    $("#matriculables").load("../MatricularUsuarios/" +@Model.id +"?nombreusuario=" + nombre + "&rol=" + rol + "&colegio=" + colegio + "&nivel=" + nivel + " #usuariosQuitar");
                     return false;
                 });
                 $("#rol").change(function () {
@@ -26,7 +26,7 @@
                     var rol = document.getElementById('rol').value;
                     var colegio = document.getElementById('colegio').value;
                     var nivel = document.getElementById('nivel').value;
-                    $("#matriculables").load("../MatricularUsuarios/" +@Model.id +"?nombreusuario=" + nombre + "&rol=" + rol + "&colegio=" + colegio + "&nivel=" + nivel + " #usuariosMatricular");
+                    $("#matriculables").load("../MatricularUsuarios/" +@Model.id +"?nombreusuario=" + nombre + "&rol=" + rol + "&colegio=" + colegio + "&nivel=" + nivel + " #usuariosQuitar");
                     return false;
                 });
                 $("#colegio").change(function () {
@@ -34,7 +34,7 @@
                     var rol = document.getElementById('rol').value;
                     var colegio = document.getElementById('colegio').value;
                     var nivel = document.getElementById('nivel').value;
-                    $("#matriculables").load("../MatricularUsuarios/" +@Model.id +"?nombreusuario=" + nombre + "&rol=" + rol + "&colegio=" + colegio + "&nivel=" + nivel + " #usuariosMatricular");
+                    $("#matriculables").load("../MatricularUsuarios/" +@Model.id +"?nombreusuario=" + nombre + "&rol=" + rol + "&colegio=" + colegio + "&nivel=" + nivel + " #usuariosQuitar");
                     return false;
                 });
                 $("#nivel").change(function () {
@@ -42,7 +42,7 @@
                     var rol = document.getElementById('rol').value;
                     var colegio = document.getElementById('colegio').value;
                     var nivel = document.getElementById('nivel').value;
-                    $("#matriculables").load("../MatricularUsuarios/" +@Model.id +"?nombreusuario=" + nombre + "&rol=" + rol + "&colegio=" + colegio + "&nivel=" + nivel + " #usuariosMatricular");
+                    $("#matriculables").load("../MatricularUsuarios/" +@Model.id +"?nombreusuario=" + nombre + "&rol=" + rol + "&colegio=" + colegio + "&nivel=" + nivel + " #usuariosQuitar");
                     return false;
                 });
                 $("#quitar").click(function () {
@@ -118,10 +118,10 @@
                 </div>
             </div>
             
-
-            <div class="form-group col-lg-9" id="matriculables">
+        
+            <div class="form-group col-lg-9" >
                 <p><h4>Matricule uno o mas usuarios:</h4></p>
-                <div>
+                <div id="matriculables">
                     <select id="usuariosQuitar" class="form-control lista-usuarios" multiple="multiple" name="usuariosQuitar">
                         @foreach (var item in ViewBag.usuariosAMatricular)
                         {

@@ -8,6 +8,28 @@
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script>
 
+        function CerrarSesiones() {
+            $(document).ready(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/PCD/usuarios/CerrarSesiones",
+                    data: '{}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data === "Exito") {
+                            alert("Modificación exitosa");
+                        }
+                    },
+                    error: errores
+                });
+                function errores(data) {
+                    alert(data);
+                }
+                return false;
+            });
+        }
+
         function bloquearUsuario(id) {
             $(document).ready(function () {
                 $.ajax({
@@ -30,6 +52,7 @@
                 return false;
             });
         }
+
         function RenovarSubscripcion(id) {
             $(document).ready(function () {
                 $.ajax({
@@ -121,14 +144,16 @@
 
         });
 
-    </script>
+        </script>
+    
 </head>
 
 <h2>Usuarios</h2>
 <div class="col-lg-9">
     <p>
         @Html.ActionLink("Insertar un usuario nuevo", "Create")<br />
-        @Html.ActionLink("Generar Usuarios", "GenerarUsuarios")
+        @Html.ActionLink("Generar Usuarios", "GenerarUsuarios")<br />
+        <a onclick="CerrarSesiones()">Cerrar todas las sesiones activas en este momento</a>
     </p>
     <div class="col-lg-9 barra-busqueda form-group">
         @Html.Label("Buscar:", htmlAttributes: new { @class = "col-md-2" })

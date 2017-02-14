@@ -358,5 +358,32 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Articulos">
+      <EntityTypeMapping TypeName="ModelPimas.Articulo">
+        <MappingFragment StoreEntitySet="Articulos">
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ventas">
+      <EntityTypeMapping TypeName="ModelPimas.Venta">
+        <MappingFragment StoreEntitySet="Venta">
+          <ScalarProperty Name="forma_pago" ColumnName="forma_pago" />
+          <ScalarProperty Name="tipo_entrega" ColumnName="tipo_entrega" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="horario" ColumnName="horario" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="numero_receptor" ColumnName="numero_receptor" />
+          <ScalarProperty Name="numero_comprador" ColumnName="numero_comprador" />
+          <ScalarProperty Name="nombre_receptor" ColumnName="nombre_receptor" />
+          <ScalarProperty Name="nombre_comprador" ColumnName="nombre_comprador" />
+          <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
