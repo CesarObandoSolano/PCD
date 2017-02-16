@@ -12,52 +12,41 @@ using System.Web.Routing;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Win32;
-using Umbraco.Web;
 
 namespace Plataforma
 {
     
-    public class MvcApplication : UmbracoApplication
+    public class MvcApplication : System.Web.HttpApplication
     {
 
-        //public override void Init()
-        //{
-        //    ProgramadorTarea.Start();
-        //}
-
-        protected override void OnApplicationStarted(object sender, EventArgs e)
+        protected void Application_Start()
         {
+            AreaRegistration.RegisterAllAreas();
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
             ProgramadorTarea.Start();
+
         }
 
-        //protected void Application_Start()
-        //{
-        //    AreaRegistration.RegisterAllAreas();
-        //    FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-        //    RouteConfig.RegisterRoutes(RouteTable.Routes);
-        //    BundleConfig.RegisterBundles(BundleTable.Bundles);
-        //    AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
-        //    ProgramadorTarea.Start();
-        //}
-
-
-        //public void Session_Start(object sender, EventArgs e)
-        //{
-        //    if (Session["usuario"] != null)
-        //    {
-        //        usuario usuario = (usuario)Session["usuario"];
-        //        Session["id"] = usuario.id;
-        //    }
-        //}
-
-        public void Session_End(object sender, EventArgs e)
+        void Session_Start(object sender, EventArgs e)
+        {
+            if (Session["usuario"] != null)
+            {
+                usuario usuario = (usuario)Session["usuario"];
+                Session["id"] = usuario.id;
+            }
+        }
+        void Session_End(object sender, EventArgs e)
         {
             if (Session["usuario"] != null)
             {
                 usuario usuario = (usuario)Session["usuario"];
                 new AccountController().CerrarSesion(usuario.id);
             }
-
+            
         }
+
     }
 }

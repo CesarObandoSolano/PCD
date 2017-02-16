@@ -8,7 +8,7 @@
     <script>
         function Buscar() {
             var nombre = document.getElementById('nombre').value;
-            $("#tabla-libro").load("/PCD/libros/Index/?nombre=" + nombre + " #tabla-libro");
+            $("#tabla-libro").load("PCD/libros/Index/?nombre=" + nombre + " #tabla-libro");
             return false;
         }
         function SolicitarLibro(id) {
@@ -22,7 +22,7 @@
                     success: function (data) {
                         if (data === "Exito") {
                             alert("Modificación exitosa");
-                            $('#' + id).load('../PCD/libros/Index #' + id);
+                            $('#' + id).load('..PCD/libros/Index #' + id);
                         }
                     },
                     error: errores
