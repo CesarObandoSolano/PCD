@@ -355,7 +355,7 @@ namespace Plataforma.Areas.PCD.Controllers
                     db.SaveChanges();
                     if (curso.documentos_curso.Count > 0)
                     {
-                        ICollection<documentos_curso> documentosOrdenados = curso.documentos_curso.OrderBy(d => d.documento.unidade.unidad).ToList();
+                        ICollection<documentos_curso> documentosOrdenados = curso.documentos_curso.OrderBy(d => d.documento.unidad).ToList();
                         curso.documentos_curso = documentosOrdenados;
                         foreach (documentos_curso documentoTemp in curso.documentos_curso)
                         {

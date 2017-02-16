@@ -8,7 +8,7 @@
     <script>
         function Buscar() {
             var nombre = document.getElementById('nombre').value;
-            $("#tabla-profesores").load("../profesores_temporal/Index/?nombre=" + nombre + " #tabla-profesores");
+            $("#tabla-profesores").load("/PCD/profesores_temporal/Index/?nombre=" + nombre + " #tabla-profesores");
             return false;
         }
         function confirmacion() {

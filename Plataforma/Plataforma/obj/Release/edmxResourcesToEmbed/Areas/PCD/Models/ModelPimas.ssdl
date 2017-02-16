@@ -266,15 +266,6 @@
     <Property Name="id_grupo" Type="int" Nullable="false" />
     <Property Name="id_usuario" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Articulos">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
-    <Property Name="detalle" Type="varchar" MaxLength="255" />
-    <Property Name="precio" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-  </EntityType>
   <EntityType Name="comentarios">
     <Key>
       <PropertyRef Name="id" />
@@ -346,34 +337,6 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="unidad" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="Venta">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="id_articulo" Type="int" Nullable="false" />
-    <Property Name="nombre_comprador" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="nombre_receptor" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="numero_comprador" Type="int" Nullable="false" />
-    <Property Name="numero_receptor" Type="int" Nullable="false" />
-    <Property Name="direccion" Type="varchar" MaxLength="255" Nullable="false" />
-    <Property Name="horario" Type="varchar" MaxLength="150" />
-    <Property Name="cantidad" Type="int" Nullable="false" />
-    <Property Name="tipo_entrega" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="forma_pago" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_Articulo_Venta">
-    <End Role="Articulos" Type="Self.Articulos" Multiplicity="1" />
-    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Articulos">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Venta">
-        <PropertyRef Name="id_articulo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_colegio_tipo">
     <End Role="tipo_colegio" Type="Self.tipo_colegio" Multiplicity="1" />
     <End Role="colegio" Type="Self.colegio" Multiplicity="*" />
@@ -996,7 +959,6 @@
     <EntitySet Name="tipo_documento" EntityType="Self.tipo_documento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuarios_grupo" EntityType="Self.usuarios_grupo" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Articulos" EntityType="Self.Articulos" Schema="pcd" store:Type="Tables" />
     <EntitySet Name="comentarios" EntityType="Self.comentarios" Schema="pcd" store:Type="Tables" />
     <EntitySet Name="cursos_rol" EntityType="Self.cursos_rol" Schema="pcd" store:Type="Tables" />
     <EntitySet Name="log_visitas_cursousuario" EntityType="Self.log_visitas_cursousuario" Schema="pcd" store:Type="Tables" />
@@ -1005,11 +967,6 @@
     <EntitySet Name="respuestas" EntityType="Self.respuestas" Schema="pcd" store:Type="Tables" />
     <EntitySet Name="tipo_colegio" EntityType="Self.tipo_colegio" Schema="pcd" store:Type="Tables" />
     <EntitySet Name="unidades" EntityType="Self.unidades" Schema="pcd" store:Type="Tables" />
-    <EntitySet Name="Venta" EntityType="Self.Venta" Schema="pcd" store:Type="Tables" />
-    <AssociationSet Name="FK_Articulo_Venta" Association="Self.FK_Articulo_Venta">
-      <End Role="Articulos" EntitySet="Articulos" />
-      <End Role="Venta" EntitySet="Venta" />
-    </AssociationSet>
     <AssociationSet Name="FK_colegio_tipo" Association="Self.FK_colegio_tipo">
       <End Role="tipo_colegio" EntitySet="tipo_colegio" />
       <End Role="colegio" EntitySet="colegio" />
