@@ -36,8 +36,6 @@ namespace Plataforma.Areas.PCD.Controllers
                     {
                         colegios = db.colegios.Include(c => c.pais).ToList();
                     }
-                    colegios = colegios.OrderBy(c => c.id_tipo_colegio).
-                        ThenBy(c=>c.nombre).ToList();
                     return View(colegios);
                 }
                 else
